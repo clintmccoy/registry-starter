@@ -1,9 +1,8 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat } from "next/font/google";
+import { Public_Sans, IBM_Plex_Sans } from "next/font/google";
 import type { ReactNode } from "react";
-
 import { cn } from "@/lib/utils";
 
 import "@/app/tokens.css";
@@ -15,19 +14,16 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.svg", type: "image/svg+xml" }],
 };
 
-const GeistSans = Geist({
+const HeadingFont = Public_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["500", "600"],        // 500 = medium, 600 = semi-bold
+  variable: "--font-heading",
 });
 
-const GeistMono = Geist_Mono({
+const BodyFont = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: "--font-mono",
-});
-
-const MontserratSerif = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-serif",
+  weight: ["400"],               // regular weight
+  variable: "--font-body",
 });
 
 export default function RootLayout({
@@ -39,8 +35,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        GeistSans.variable,
-        GeistMono.variable,
+        HeadingFont.variable,
+        BodyFont.variable,
         MontserratSerif.variable,
         "bg-background text-foreground",
       )}
